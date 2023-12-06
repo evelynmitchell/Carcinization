@@ -13,6 +13,8 @@ WORKDIR /usr/src/carcin
 
 # Install Python dependencies
 # COPY requirements.txt and pyproject.toml if you're using poetry for dependency management
+RUN curl https://pyenv.run | bash ; export PATH="~/.pyenv/bin:$PATH" ; eval "$(pyenv init -)" ; eval "$(pyenv virtualenv-init -)"
+
 COPY requirements.txt .
 RUN pip install --upgrade pip
 RUN pip install --no-cache-dir -r requirements.txt
